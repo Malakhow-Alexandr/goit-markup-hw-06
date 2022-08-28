@@ -2,6 +2,7 @@
   --primary-text-color: #757575;
   --title-text-color: #212121;
   --primary-white-color: #ffffff;
+  --placeholder-text-color:rgba(117, 117, 117, 0.5);
   --accent-text-color: #2196f3;
   --adress-text-color: rgba(255, 255, 255, 0.6);
   --primary-bg-color: #ffffff;
@@ -11,6 +12,7 @@
   --button-bg-color: #2196f3;
   --outline-color: #eeeeee;
   --footer-icon-color: #55565e;
+  --border-form-color:rgba(33, 33, 33, 0.2);
   --svg-icon-color: #afb1b8;
   --card-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -18,7 +20,7 @@
     1px 4px 6px rgba(0, 0, 0, 0.16);
   --button-portfolio-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-
+  --button-modal-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -83,6 +85,8 @@ img {
   text-align: center;
   letter-spacing: 0.03em;
   cursor: pointer;
+  transition: background-color 250ms var(--timing-function),
+  color 250ms var(--timing-function);
 }
 
 .hero .button.primary {
@@ -260,9 +264,11 @@ img {
 }
 
 .hero-title {
+  width: 696px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 0;
   margin-bottom: 30px;
-
   color: var(--primary-white-color);
   font-weight: 900;
   font-size: 44px;
@@ -277,9 +283,16 @@ img {
   padding-bottom: 94px;
 }
 .feature-title {
-  visibility: hidden;
-  pointer-events: none;
   position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip:rect(0 0 0 0);
+  overflow: hidden;
 }
 
 .feature-list {
@@ -589,21 +602,204 @@ img {
   left: 50%;
   transform: translate(-50%, -50%) scale(1) rotate(360deg);
   border-radius: 4px;
-  height: 581px;
+  min-height: 581px;
   width: 528px;
-  padding: 8px;
+  padding: 40px;
   background-color: var(--primary-bg-color);
   box-shadow: var(--card-shadow);
-  text-align: right;
   transition: transform 250ms var(--timing-function);
 }
-.modal-button {
+.modal-button-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
+  margin-left: auto;
   cursor: pointer;
   background-color: var(--primary-white-color);
+  transition: fill 250ms var(--timing-function),
+  border-color 250ms var(--timing-function);
+}
+
+.modal-button-close:hover {
+  fill: var(--accent-text-color);
+  border-color: var(--accent-text-color);
+}
+.modal-discription {
+  margin: 0px 0px 12px 0px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--title-text-color);
+}
+.form {
+  display: block;
+  width: 448px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction:column;
+  margin-bottom: 10px;
+}
+
+.form-feedback {
+  margin-bottom: 20px;
+}
+
+.form-checkbox {
+  margin-bottom: 30px;
+}
+.form-label {
+  margin-bottom: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+}
+.form-input {
+  border: 1px solid var(--border-form-color);
+  border-radius: 4px;
+  padding: 9px 35px;
+  transition: border-color 250ms var(--timing-function);
+}
+.form-input:hover,
+.form-input:focus {
+  border-color: var(--accent-text-color);
+}
+.form-input:hover + .input-icon,
+.form-input:focus + .input-icon{
+  fill: var(--accent-text-color);
+}
+.form-input:focus-visible{
+  outline: none;
+}
+.input-icon {
+  transition: fill 250ms var(--timing-function);
+}
+.form-name {
+  position: relative;
+  }
+.input-icon-name {
+  position: absolute;
+  top: 28px;
+  left: 12px;
+}
+.form-tell {
+  position: relative;
+}
+.input-icon-tell {
+  position: absolute;
+  top: 28px;
+  left: 12px;
+}
+.form-email {
+  position: relative;
+}
+.input-icon-email {
+  position: absolute;
+  top: 28px;
+  left: 12px;
+}
+.textarea-input {
+  border: 1px solid var(--border-form-color);
+  border-radius: 4px;
+  width: 448px;
+  min-height: 120px;
+  padding: 12px 16px;
+  resize:none;
+  transition: border-color 250ms var(--timing-function);
+}
+.form-feedback textarea::placeholder {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+  color: var(--placeholder-text-color);
+}
+.textarea-input:hover,
+.textarea-input:focus {
+  border-color: var(--accent-text-color);
+}
+.textarea-input:focus-visible{
+  outline: none;}
+
+.form-checkbox {
+  margin-left: auto;
+  margin-right: auto;
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkbox-input {
+  appearance: none;
+}
+.checkbox-icon-span {
+  display: flex;
+  width: 16px;
+  height: 15px;
+  border: 2px solid var(--title-text-color);
+  border-radius: 2px;
+  margin-right: 8px;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox-icon {
+  fill: transparent;
+}
+.checkbox-input:checked+.checkbox-icon-span{
+  border-color: transparent;
+  background-color: #2196f3;
+}
+.checkbox-input:checked +.checkbox-icon-span .checkbox-icon {
+  fill: var(--primary-white-color);
+}
+.checkbox-text {
+  margin-right: 5px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.checkbox-link {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+  text-decoration-line: underline;
+  color: var(--accent-text-color);
+}
+
+.form-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 200px;
+  min-height: 50px;
+  background-color: var(--button-bg-color);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  color: var(--primary-white-color);
+  box-shadow: var(--button-modal-shadow);
+  cursor: pointer;
+  transition: background-color 250ms var(--timing-function);
+}
+.form-button:hover,
+.form-button:focus {
+  background-color: var(--footer-bg-color);
 }
 
 /* Portfolio */ /* Portfolio */ /* Portfolio */ /* Portfolio */
@@ -613,9 +809,16 @@ img {
 }
 
 .main-title {
-  visibility: hidden;
-  pointer-events: none;
   position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip:rect(0 0 0 0);
+  overflow: hidden;
 }
 /* Button list */ /* Button list */ /* Button list */ /* Button list */
 .button-list {
